@@ -65,3 +65,23 @@ switch (pilihan) {
                         nextId++; // Increment ID untuk penumpang berikutnya
                     }
                     break;
+        case 2: // Turunkan Penumpang
+                    System.out.println("\n--- TURUNKAN PENUMPANG ---");
+                    System.out.print("Masukkan ID Penumpang yang akan turun: "); // [cite: 101]
+                    int idTurun;
+                    try {
+                        idTurun = scanner.nextInt();
+                    } catch (java.util.InputMismatchException e) {
+                        System.out.println("Input ID tidak valid. Harus berupa angka.");
+                        scanner.nextLine();
+                        break;
+                    }
+                    scanner.nextLine(); 
+
+                    // Turunkan Penumpang
+                    if (transKoetaradja.turunkanPenumpang(idTurun)) { // Memanggil method
+                        System.out.println("Penumpang Berhasil Turun!"); // [cite: 103]
+                    } else {
+                        System.out.println("Penumpang Tidak ditemukan!"); // [cite: 122]
+                    }
+                    break;
