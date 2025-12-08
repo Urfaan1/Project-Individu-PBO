@@ -45,3 +45,39 @@ public class Bus {
 
     public int getTotalPendapatan() {
         return totalPendapatan;
+
+public boolean naikkanPenumpang(Penumpang penumpang) {
+        if (getTotalPenumpang() >= MAX_KAPASITAS_BUS) {
+            System.out.println("Gagal: Bus sudah penuh (Kapasitas Maksimal: " + MAX_KAPASITAS_BUS + ").");
+            return false; 
+        }
+
+        if (!penumpang.kurangiSaldo(ONGKOS_BUS)) {
+            System.out.println("Gagal: Saldo tidak mencukupi untuk membayar ongkos bus (" + ONGKOS_BUS + "). Saldo saat ini: " + penumpang.getSaldo());
+            return false;
+        }
+
+        if (penumpang.isPrioritas()) {
+   
+            if (getJumlahPenumpangPrioritas() < MAX_KURSI_PRIORITAS) {
+                penumpangPrioritas.add(penumpang);
+                System.out.println("Penumpang Prioritas (ID: " + penumpang.getID() + ") berhasil duduk di KURSI PRIORITAS.");
+            } else if (getJumlahPenumpangBiasa() < MAX_KURSI_BIASA) {
+                penumpangBiasa.add(penumpang);
+                System.out.println("Penumpang Prioritas (ID: " + penumpang.getID() + ") berhasil duduk di KURSI BIASA.");
+            } else {
+                penumpangBerdiri.add(penumpang);
+                System.out.println("Penumpang Prioritas (ID: " + penumpang.getID() + ") berhasil NAIK dan BERDIRI.");
+            }
+        } else {
+            if (getJumlahPenumpangBiasa() < MAX_KURSI_BIASA) {
+                penumpangBiasa.add(penumpang);
+                System.out.println("Penumpang Biasa (ID: " + penumpang.getID() + ") berhasil duduk di KURSI BIASA.");
+            } else {
+                penumpangBerdiri.add(penumpang);
+                System.out.println("Penumpang Biasa (ID: " + penumpang.getID() + ") berhasil NAIK dan BERDIRI.");
+            }
+        }
+        this.totalPendapatan += ONGKOS_BUS;
+        return true; 
+    }
