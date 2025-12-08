@@ -87,3 +87,24 @@ public boolean naikkanPenumpang(Penumpang penumpang) {
         this.totalPendapatan += ONGKOS_BUS;
         return true; 
     }
+   /**
+     * Method untuk menurunkan penumpang.
+     * @param idPenumpang ID penumpang yang akan turun.
+     * @return true jika penumpang ditemukan dan berhasil dihapus, false jika tidak.
+     */
+    public boolean turunkanPenumpang(int idPenumpang) {
+        if (penumpangPrioritas.removeIf(p -> p.getID() == idPenumpang)) {
+            System.out.println("Penumpang (ID: " + idPenumpang + ") berhasil turun dari KURSI PRIORITAS.");
+            return true;
+        }
+        if (penumpangBiasa.removeIf(p -> p.getID() == idPenumpang)) {
+            System.out.println("Penumpang (ID: " + idPenumpang + ") berhasil turun dari KURSI BIASA.");
+            return true;
+        }
+        if (penumpangBerdiri.removeIf(p -> p.getID() == idPenumpang)) {
+            System.out.println("Penumpang (ID: " + idPenumpang + ") berhasil turun dari POSISI BERDIRI.");
+            return true;
+        }
+        System.out.println("Gagal: Penumpang dengan ID " + idPenumpang + " tidak ditemukan.");
+        return false;
+    }
