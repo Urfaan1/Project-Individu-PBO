@@ -33,3 +33,35 @@ public class TestBus {
                 continue;
             }
             scanner.nextLine(); // Membersihkan buffer setelah nextInt()
+switch (pilihan) {
+                case 1: // Naikkan Penumpang
+                    System.out.println("\n--- NAIKKAN PENUMPANG ---");
+                    
+                    // Input Data Penumpang Baru
+                    // Menggunakan ID sebagai pengganti Nama berdasarkan contoh simulasi [cite: 82]
+                    System.out.println("ID Penumpang (digunakan untuk turun): " + nextId + " (Otomatis)");
+                    int idBaru = nextId; 
+                    
+                    System.out.print("Umur: "); // [cite: 83]
+                    int umurBaru = scanner.nextInt();
+                    scanner.nextLine();
+                    
+                    System.out.print("Hamil (y/n): "); // [cite: 84]
+                    String hamilInput = scanner.nextLine().toLowerCase();
+                    boolean hamilBaru = hamilInput.equals("y");
+
+                    // Instansiasi objek baru (Pemanggilan Method Constructor)
+                    Penumpang penumpangBaru = new Penumpang(idBaru, umurBaru, hamilBaru); // Objek Penumpang
+                    
+                    // Simulasi Tambah Saldo
+                    if (penumpangBaru.getSaldo() < Bus.ONGKOS_BUS) {
+                        System.out.println("Saldo awal kurang dari ongkos. Tambahkan saldo otomatis.");
+                        penumpangBaru.tambahSaldo(Bus.ONGKOS_BUS); // Memanggil method tambahSaldo
+                    }
+                    
+                    // Naikkan Penumpang (Pemanggilan Method)
+                    if (transKoetaradja.naikkanPenumpang(penumpangBaru)) {
+                        System.out.println("Penumpang berhasil ditambahkan!"); // [cite: 87]
+                        nextId++; // Increment ID untuk penumpang berikutnya
+                    }
+                    break;
