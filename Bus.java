@@ -46,6 +46,12 @@ public class Bus {
     public int getTotalPendapatan() {
         return totalPendapatan;
 
+       /**
+     * Method untuk menambahkan penumpang ke dalam Bus (selagi bus belum melebihi kapasitas).
+     * @param penumpang Objek Penumpang yang akan naik.
+     * @return true jika penumpang berhasil naik, false jika tidak.
+     */
+
 public boolean naikkanPenumpang(Penumpang penumpang) {
         if (getTotalPenumpang() >= MAX_KAPASITAS_BUS) {
             System.out.println("Gagal: Bus sudah penuh (Kapasitas Maksimal: " + MAX_KAPASITAS_BUS + ").");
