@@ -29,3 +29,44 @@ public class Penumpang {
     public int getSaldo() {
         return saldo;
     }
+    /**
+     * Menambah saldo kartu penumpang.
+     * @param saldobaru Jumlah saldo yang ditambahkan
+     */
+    public void tambahSaldo(int saldobaru) {
+        if (saldobaru > 0) {
+            this.saldo += saldobaru; 
+            System.out.println("Saldo berhasil ditambahkan. Saldo saat ini: " + this.saldo);
+        } else {
+            System.out.println("Gagal: Jumlah saldo baru harus positif.");
+        }
+    }
+
+    /**
+     * Mengurangi saldo kartu penumpang saat membayar ongkos bus.
+     * @param ongkos Jumlah ongkos bus
+     * @return true jika saldo mencukupi dan berhasil dikurangi, false jika tidak.
+     */
+    public boolean kurangiSaldo(int ongkos) {
+        
+        if (this.saldo >= ongkos) {
+            this.saldo -= ongkos;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Mengecek apakah penumpang ini termasuk penumpang prioritas.
+     * @return true jika lansia, anak-anak, atau ibu hamil.
+     */
+    public boolean isPrioritas() {
+        return this.umur > 60 || this.umur < 10 || this.hamil;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + this.id + " (Umur: " + this.umur + ", Hamil: " + (this.hamil ? "Ya" : "Tidak") + ")";
+    }
+}
