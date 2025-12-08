@@ -90,4 +90,26 @@ switch (pilihan) {
                     // Memanggil method toString() [cite: 63]
                     System.out.println(transKoetaradja.toString()); 
                     break;
+        case 4: // Tambah Saldo Penumpang
+                    System.out.println("\n--- TAMBAH SALDO ---");
+                    System.out.print("Masukkan ID Penumpang yang akan ditambahkan saldo: ");
+                    int idTambahSaldo;
+                    try {
+                        idTambahSaldo = scanner.nextInt();
+                    } catch (java.util.InputMismatchException e) {
+                        System.out.println("Input ID tidak valid. Harus berupa angka.");
+                        scanner.nextLine();
+                        break;
+                    }
+                    scanner.nextLine();
 
+                    System.out.print("Masukkan jumlah saldo yang akan ditambahkan: ");
+                    int jumlahTambah;
+                    try {
+                        jumlahTambah = scanner.nextInt();
+                    } catch (java.util.InputMismatchException e) {
+                        System.out.println("Input jumlah saldo tidak valid. Harus berupa angka.");
+                        scanner.nextLine();
+                        break;
+                    }
+                    scanner.nextLine();
