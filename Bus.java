@@ -108,3 +108,45 @@ public boolean naikkanPenumpang(Penumpang penumpang) {
         System.out.println("Gagal: Penumpang dengan ID " + idPenumpang + " tidak ditemukan.");
         return false;
     }
+   /**
+     * Method untuk mencetak daftar penumpang dan total informasi.
+     * @return String representasi daftar penumpang dan total informasi bus.
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("Kursi Biasa (").append(getJumlahPenumpangBiasa()).append("/").append(MAX_KURSI_BIASA).append("):\n");
+        if (penumpangBiasa.isEmpty()) {
+            sb.append("  <kosong>\n");
+        } else {
+            for (Penumpang p : penumpangBiasa) {
+                sb.append("  - ID: ").append(p.getID()).append(" (Umur: ").append(p.getUmur()).append(", Hamil: ").append(p.getHamil() ? "Ya" : "Tidak").append(", Prioritas: ").append(p.isPrioritas() ? "Ya" : "Tidak").append(")\n");
+            }
+        }
+        
+        sb.append("Kursi Prioritas (").append(getJumlahPenumpangPrioritas()).append("/").append(MAX_KURSI_PRIORITAS).append("):\n");
+        if (penumpangPrioritas.isEmpty()) {
+            sb.append("  <kosong>\n");
+        } else {
+            for (Penumpang p : penumpangPrioritas) {
+                sb.append("  - ID: ").append(p.getID()).append(" (Umur: ").append(p.getUmur()).append(", Hamil: ").append(p.getHamil() ? "Ya" : "Tidak").append(")\n");
+            }
+        }
+        
+        sb.append("Posisi Berdiri (").append(getJumlahPenumpangBerdiri()).append("/").append(MAX_PENUMPANG_BERDIRI).append("):\n");
+        if (penumpangBerdiri.isEmpty()) {
+            sb.append("  <kosong>\n");
+        } else {
+            for (Penumpang p : penumpangBerdiri) {
+                sb.append("  - ID: ").append(p.getID()).append(" (Umur: ").append(p.getUmur()).append(", Hamil: ").append(p.getHamil() ? "Ya" : "Tidak").append(", Prioritas: ").append(p.isPrioritas() ? "Ya" : "Tidak").append(")\n");
+            }
+        }
+        
+        sb.append("\n==================================\n");
+        sb.append("Jumlah Total Penumpang: ").append(getTotalPenumpang()).append(" / ").append(MAX_KAPASITAS_BUS).append("\n");
+        sb.append("Total Pendapatan Bus: ").append(getTotalPendapatan()).append(" (Ongkos per Penumpang: ").append(ONGKOS_BUS).append(")");
+        
+        return sb.toString();
+    }
+}
