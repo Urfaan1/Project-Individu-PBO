@@ -113,3 +113,35 @@ switch (pilihan) {
                         break;
                     }
                     scanner.nextLine();
+        
+                    // Cari penumpang di semua list
+                    Penumpang pToUpdate = null;
+                    for (Penumpang p : transKoetaradja.getPenumpangPrioritas()) {
+                        if (p.getID() == idTambahSaldo) pToUpdate = p;
+                    }
+                    for (Penumpang p : transKoetaradja.getPenumpangBiasa()) {
+                        if (p.getID() == idTambahSaldo) pToUpdate = p;
+                    }
+                    for (Penumpang p : transKoetaradja.getPenumpangBerdiri()) {
+                        if (p.getID() == idTambahSaldo) pToUpdate = p;
+                    }
+
+                    if (pToUpdate != null) {
+                        pToUpdate.tambahSaldo(jumlahTambah); // Memanggil method
+                    } else {
+                        System.out.println("Gagal: Penumpang dengan ID " + idTambahSaldo + " tidak ditemukan di dalam bus.");
+                    }
+                    break;
+                    
+                case 0:
+                    System.out.println("\nTerima kasih! Program selesai.");
+                    break;
+                    
+                default:
+                    System.out.println("\nPilihan tidak valid. Silakan pilih 1, 2, 3, 4, atau 0.");
+            }
+        } while (pilihan != 0);
+
+        scanner.close();
+    }
+}
