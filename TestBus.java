@@ -85,3 +85,9 @@ switch (pilihan) {
                         System.out.println("Penumpang Tidak ditemukan!"); // [cite: 122]
                     }
                     break;
+        case 3: // Lihat Penumpang
+                    System.out.println("\n--- DETAIL BUS ---");
+                    // Memanggil method toString() [cite: 63]
+                    System.out.println(transKoetaradja.toString()); 
+                    break;
+
