@@ -14,3 +14,34 @@ public class Bus {
     private List<Penumpang> penumpangPrioritas; 
     private List<Penumpang> penumpangBerdiri; 
     private int totalPendapatan; 
+
+   public List<Penumpang> getPenumpangBiasa() {
+        return penumpangBiasa;
+    }
+
+    public List<Penumpang> getPenumpangPrioritas() {
+        return penumpangPrioritas;
+    }
+
+    public List<Penumpang> getPenumpangBerdiri() {
+        return penumpangBerdiri;
+    }
+
+    public int getJumlahPenumpangBiasa() {
+        return penumpangBiasa.size();
+    }
+
+    public int getJumlahPenumpangPrioritas() {
+        return penumpangPrioritas.size();
+    }
+
+    public int getJumlahPenumpangBerdiri() {
+        return penumpangBerdiri.size();
+    }
+
+    public int getTotalPenumpang() {
+        return getJumlahPenumpangBiasa() + getJumlahPenumpangPrioritas() + getJumlahPenumpangBerdiri();
+    }
+
+    public int getTotalPendapatan() {
+        return totalPendapatan;
